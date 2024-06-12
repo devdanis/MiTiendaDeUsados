@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Cocina Rondi Maxi Cheff",
+		"description": "Cocina Rondi Maxi Cheff Plateada es el sueño de todo pequeño chef. Con su diseño plateado y detalles realistas, esta cocina es perfecta para estimular la imaginación y creatividad de los niños. Viene con 20 accesorios, incluyendo utensilios de cocina, platos y alimentos de juguete, para que los pequeños puedan jugar a cocinar como los adultos. Además, cuenta con luz y sonido, lo que añade un toque de realismo a la experiencia de juego. El horno incluido permite a los niños simular el proceso de cocción y aprender sobre los diferentes alimentos.",
+		"ubicacion": "CABA - barrio/localidad: Mataderos",
+		"contacto": "Contacto: Daniel - Whatsapp: 1134011848",
+		"price": 30000,
+		"images": ["images/1/producto1.webp", "images/1/producto2.webp"]
+	},
+	{
+		"name": "Cafetera",
+		"description": "Cafetera a filtro Moulinex, con jarra de acero inoxidable, funciona perfecto está como nueva con poco uso.",
+		"ubicacion": "CABA - barrio/localidad: Mataderos",
+		"contacto": "Contacto: Daniel - Whatsapp: 1134011848",
+		"price": 30000,
+		"images": [
+			"images/2/Cafetera1.jpg",
+			"images/2/Cafetera2.jpg",
+			"images/2/Cafetera3.jpg"
+		]
+	}
+]
