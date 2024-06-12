@@ -10,9 +10,36 @@
 	</head>
 	<body>
 		<header>
-			<h1>Tienda de Productos</h1>
+			<h1>Mi Tienda de Productos Usados</h1>
 		</header>
 		<main>
+			<aside>
+				<form id="filters">
+					<h2>Filtrar Productos</h2>
+					<label for="filter-name">Buscar:</label>
+					<input
+						type="text"
+						id="filter-name"
+						placeholder="Cualquier palabra..."
+					/>
+
+					<label for="filter-price-min">Precio Mínimo:</label>
+					<input type="number" id="filter-price-min" placeholder="0" />
+
+					<label for="filter-price-max">Precio Máximo:</label>
+					<input type="number" id="filter-price-max" placeholder="100" />
+
+					<label for="sort-price">Ordenar por Precio:</label>
+					<select id="sort-price">
+						<option value="none">Sin ordenar</option>
+						<option value="asc">Menor a mayor</option>
+						<option value="desc">Mayor a menor</option>
+					</select>
+
+					<button type="button" id="apply-filters">Aplicar Filtros</button>
+					<button type="button" id="clear-filters">Limpiar Filtros</button>
+				</form>
+			</aside>
 			<section id="product-list"></section>
 		</main>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
