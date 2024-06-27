@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="product-content">
                     <h3>${product.name}</h3>
                     <p>${product.description}</p>
+					<p>${product.ubicacion}</p>
+					<p>${product.contacto}</p>
                     <span>$${product.price}</span>
                 </div>
             `;
