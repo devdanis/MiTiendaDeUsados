@@ -4,15 +4,36 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mi Tienda</title>
-		<link rel="stylesheet" href="slick/slick.css" />
-		<link rel="stylesheet" href="slick/slick-theme.css" />
+		<!-- <link rel="stylesheet" href="slick/slick.css" />
+		<link rel="stylesheet" href="slick/slick-theme.css" /> -->
+
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+		/>
 		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+		/>
+		<meta
+			name="description"
+			content="Compra y vende productos usados de manera rápida y sencilla. Encuentra los mejores precios y ofertas en nuestra tienda online."
+		/>
 	</head>
 	<body>
 		<header>
 			<h1>Mi Tienda de Productos Usados</h1>
 		</header>
 		<main>
+			<button id="toggleAside">☰ Menú de Filtros</button>
+
 			<aside>
 				<form id="filters">
 					<h2>Filtrar Productos</h2>
@@ -21,6 +42,14 @@
 						type="text"
 						id="filter-name"
 						placeholder="Cualquier palabra..."
+					/>
+
+					<div id="price-range"></div>
+					<input
+						type="text"
+						id="amount"
+						readonly
+						style="border: 0; color: #f6931f; font-weight: bold"
 					/>
 
 					<label for="filter-price-min">Precio Mínimo:</label>
@@ -36,14 +65,22 @@
 						<option value="desc">Mayor a menor</option>
 					</select>
 
+					<div id="rangeFilter"></div>
+
 					<button type="button" id="apply-filters">Aplicar Filtros</button>
 					<button type="button" id="clear-filters">Limpiar Filtros</button>
 				</form>
 			</aside>
 			<section id="product-list"></section>
 		</main>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="slick/slick.min.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- <script src="slick/slick.min.js"></script> -->
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+		></script>
 		<script src="scripts.js"></script>
 	</body>
 </html>

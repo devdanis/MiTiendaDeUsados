@@ -18,5 +18,22 @@
 			"images/2/Cafetera2.jpg",
 			"images/2/Cafetera3.jpg"
 		]
+	},
+	{
+		"name": "Soldadora de Alta Frecuencia",
+		"description": "Soldadora de alta frecuencia para hierro y acero inoxidable",
+		"ubicacion": "Localidad: Santa Fe Capital",
+		"contacto": "Contacto: Fabricio - Whatsapp: 342466470",
+		"price": 750000,
+		"images": [
+			"/images/externo/1/imagen1.jpg",
+			"/images/externo/1/imagen2.jpg",
+			"/images/externo/1/imagen3.jpg",
+			"/images/externo/1/imagen4.jpg",
+			"/images/externo/1/imagen5.jpg",
+			"/images/externo/1/imagen6.jpg",
+			"/images/externo/1/imagen7.jpg",
+			"/images/externo/1/imagen8.jpg"
+		]
 	}
 ]
