@@ -1,44 +1,15 @@
-let globalPriceRanges;
-
 document.addEventListener("DOMContentLoaded", function () {
 	let products = [];
-	// let filtersApplied = false; // Variable para rastrear si se han aplicado filtros
 	let nameFilterApplied = false;
 	let priceFilterApplied = false;
-	let rangeFilterApplied = false;
 
 	fetch("products.json")
 		.then((response) => response.json())
 		.then((data) => {
 			products = data;
-
-			// Calcula los rangos de precios y guárdalos en una variable global
-			globalPriceRanges = calculatePriceRanges(products);
-
-			// Crea los botones de rango de precios
-			createRangeButtons();
-
 			displayProducts(products);
 		})
 		.catch((error) => console.error("Error loading products:", error));
-
-	// Función para calcular los rangos de precios
-	function calculatePriceRanges(products) {
-		let prices = products.map((product) => product.price);
-		prices.sort((a, b) => a - b);
-
-		let quartile1 = prices[Math.floor(prices.length * 0.25)];
-		let quartile2 = prices[Math.floor(prices.length * 0.5)];
-		let quartile3 = prices[Math.floor(prices.length * 0.75)];
-		let quartile4 = prices[prices.length - 1];
-
-		return [
-			{ min: prices[0], max: quartile1 },
-			{ min: quartile1 + 1, max: quartile2 },
-			{ min: quartile2 + 1, max: quartile3 },
-			{ min: quartile3 + 1, max: quartile4 },
-		];
-	}
 
 	$(function () {
 		$("#price-range").slider({
@@ -61,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		);
 	});
 
-	const filtersForm = document.getElementById("filters");
+	//const filtersForm = document.getElementById("filters");
 	const filterName = document.getElementById("filter-name");
 	const filterPriceMin = document.getElementById("filter-price-min");
 	const filterPriceMax = document.getElementById("filter-price-max");
@@ -156,15 +127,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	applyFiltersButton.addEventListener("click", applyFilters); // Aplicar filtros al hacer clic en el botón
 
 	function clearFilters() {
-		console.log("clearFilters was called");
 		filterName.value = "";
 		filterPriceMin.value = "";
 		filterPriceMax.value = "";
 		sortPrice.value = "none";
 		nameFilterApplied = false;
 		priceFilterApplied = false;
-		rangeFilterApplied = false;
-		rangeFilterApplied = false;
 		displayProducts(products);
 	}
 
@@ -191,9 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			productList.appendChild(productElement);
 			clearFiltersButton.style.backgroundColor =
-				nameFilterApplied || priceFilterApplied || rangeFilterApplied
-					? "#6200ea"
-					: "#ccc";
+				nameFilterApplied || priceFilterApplied ? "#6200ea" : "#ccc";
 		});
 
 		// Inicializar slick carousel
@@ -221,39 +187,4 @@ document.addEventListener("DOMContentLoaded", function () {
 				break;
 		}
 	});
-	function applyRangeFilter(rangeIndex) {
-		if (globalPriceRanges) {
-			// Deshabilita el slider
-			$("#price-range").slider("option", "disabled", true);
-
-			// Actualiza los valores de los campos de entrada de precio
-			document.getElementById("filter-price-min").value =
-				globalPriceRanges[rangeIndex].min;
-			document.getElementById("filter-price-max").value =
-				globalPriceRanges[rangeIndex].max;
-
-			rangeFilterApplied = true;
-
-			// Habilita el slider nuevamente
-			$("#price-range").slider("option", "disabled", false);
-
-			// Forza la ejecución de applyFilters para reflejar los cambios
-			displayProducts(filteredProducts);
-		} else {
-			console.log("globalPriceRanges is not defined.");
-		}
-	}
-	// Crea los botones de rango de precios
-	function createRangeButtons() {
-		if (globalPriceRanges) {
-			let rangeButtons = "";
-			for (let i = 0; i < globalPriceRanges.length; i++) {
-				rangeButtons += `<button onclick="applyRangeFilter(${i})">`;
-				rangeButtons += `${globalPriceRanges[i].min} - ${globalPriceRanges[i].max}</button>`;
-			}
-			document.getElementById("rangeFilter").innerHTML = rangeButtons;
-		} else {
-			console.log("globalPriceRanges is not defined.");
-		}
-	}
 });
