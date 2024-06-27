@@ -1,18 +1,31 @@
+/* Variables CSS para colores y tamaños */
+:root {
+	--primary-color: #6200ea;
+	--secondary-color: #4500b5;
+	--background-color: #f4f4f9;
+	--text-color: #333;
+	--accent-color: #f6931f;
+	--font-family: "Arial", sans-serif;
+	--border-radius: 8px;
+	--box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	--transition-duration: 0.3s;
+}
+
 /* Estilos base */
 body {
-	font-family: "Arial", sans-serif;
+	font-family: var(--font-family);
 	margin: 0;
 	padding: 0;
-	background-color: #f4f4f9;
-	color: #333;
+	background-color: var(--background-color);
+	color: var(--text-color);
 }
 
 header {
-	background-color: #6200ea;
+	background-color: var(--primary-color);
 	color: white;
 	padding: 1em 0;
 	text-align: center;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: var(--box-shadow);
 }
 
 h1 {
@@ -31,9 +44,13 @@ aside {
 	width: 250px;
 	padding: 2em;
 	background: white;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
 	margin-right: 2em;
+}
+
+aside button:not(#apply-filters, #clear-filters) {
+	display: none;
 }
 
 form h2 {
@@ -47,35 +64,28 @@ label {
 
 input,
 select {
-	width: 80%;
+	width: 100%;
 	padding: 0.5em;
 	margin-bottom: 1em;
 	border: 1px solid #ccc;
-	border-radius: 4px;
+	border-radius: var(--border-radius);
 }
 
 button {
 	width: 100%;
 	padding: 0.5em;
-	background-color: #6200ea;
+	background-color: var(--primary-color);
 	color: white;
 	border: none;
-	border-radius: 4px;
+	border-radius: var(--border-radius);
 	cursor: pointer;
 	margin-bottom: 1em;
+	transition: background-color var(--transition-duration) ease-in-out;
 }
 
 button:hover {
-	background-color: #4500b5;
+	background-color: var(--secondary-color);
 }
-
-/* button#clear-filters {
-	background-color: #ccc;
-}
-
-button#clear-filters:hover {
-	background-color: #999;
-} */
 
 #product-list {
 	display: grid;
@@ -86,10 +96,10 @@ button#clear-filters:hover {
 
 .product {
 	background-color: white;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
 	overflow: hidden;
-	transition: transform 0.3s ease;
+	transition: transform var(--transition-duration) ease;
 }
 
 .product:hover {
@@ -103,7 +113,7 @@ button#clear-filters:hover {
 .product h3 {
 	margin-top: 0;
 	font-size: 1.5em;
-	color: #6200ea;
+	color: var(--primary-color);
 }
 
 .product p {
@@ -116,12 +126,13 @@ button#clear-filters:hover {
 	margin-top: 0.5em;
 	font-size: 1.2em;
 	font-weight: bold;
-	color: #333;
+	color: var(--text-color);
 }
 
 /* Estilos para el carrusel */
 .slick-slide {
 	text-align: center;
+	background-color: #9c9c9c;
 }
 
 .slick-slide img {
@@ -135,54 +146,73 @@ button#clear-filters:hover {
 /* Personalización de flechas del carrusel */
 .slick-prev,
 .slick-next {
-	font-size: 0;
-	line-height: 0;
+	/* background-color: #333; */
+	/* background-color: rgba(0, 0, 0, 0.5); Fondo semitransparente oscuro */
+	color: #fff; /* Color del texto blanco */
+	border: none;
+	padding-right: 5px;
+	cursor: pointer;
 	position: absolute;
 	top: 50%;
-	display: block;
-	width: 20px;
-	height: 20px;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	color: transparent;
-	border: none;
-	outline: none;
-	background: transparent;
-}
-
-.slick-prev:hover,
-.slick-next:hover,
-.slick-prev:focus,
-.slick-next:focus {
-	color: transparent;
-	outline: none;
-	background: transparent;
-}
-
-.slick-prev:before,
-.slick-next:before {
-	font-family: "slick";
-	font-size: 20px;
-	line-height: 1;
-	opacity: 0.75;
-	color: black;
+	transform: translateY(-50%);
+	z-index: 1;
+	/* font-size: 18px; */
 }
 
 .slick-prev {
-	left: -25px;
+	left: 10px;
 }
 
 .slick-next {
-	right: -25px;
+	right: 10px;
 }
 
-.slick-prev:before {
-	content: "←"; /* Puedes usar una flecha personalizada aquí */
+/* .slick-prev:hover,
+.slick-next:hover {
+	background-color: #555;
+} */
+
+#toggleAside {
+	display: none;
 }
 
-.slick-next:before {
-	content: "→"; /* Puedes usar una flecha personalizada aquí */
+@media (max-width: 768px) {
+	#toggleAside {
+		display: block;
+	}
+	main {
+		flex-direction: column;
+		/* Cambia la dirección del flex a columna para que el aside y la sección de productos estén uno encima del otro */
+	}
+
+	aside {
+		position: fixed;
+		top: 0px;
+		left: 35px;
+		width: 300px;
+		height: auto;
+		display: none; /* Esto lo empuja fuera de la vista inicial */
+	}
+	aside.open {
+		top: 190px;
+		z-index: 100;
+		display: block; /* Esto lo trae de vuelta a la vista */
+	}
+	#product-list {
+		grid-template-columns: 1fr;
+		/* Hace que los productos se muestren en una sola columna */
+	}
+
+	/* Oculta todos los elementos excepto el buscador y el slider */
+	aside label:not(#filter-name-label),
+	aside input:not(#filter-name, #amount),
+	aside div:not(#price-range),
+	aside button:not(#apply-filters, #clear-filters) {
+		display: none;
+	}
+	/* Muestra el slider y el buscador */
+	aside #filter-name,
+	aside #price-range {
+		display: block;
+	}
 }
